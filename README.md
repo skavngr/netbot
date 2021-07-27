@@ -10,7 +10,7 @@ What is _NetBot_?
 --
 - Proof-of-Concept code that simulates a Client-Server botnet environment.
 - Easily helps setting up a botnet chain that reports to your CCC.
-- Assists in you simulate DDoS attacks towards the target. (_Experimental/Research Usage Only_)
+- Assists in simulating DDoS attacks towards the target. (_Experimental/Research Usage Only_)
 
 Requirements
 --
