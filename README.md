@@ -12,4 +12,6 @@ What is _NetBot_?
 - Easily helps you set up a botnet chain that reports to your CCC.
 - Helps you simulate DDoS attacks towards the target. (_Experimental/Research Usage Only_)
 
-
+NetBot CCC Server
+--
+![netbot intro](https://raw.githubusercontent.com/skavngr/netbot/main/netbot.PNG)
