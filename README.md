@@ -18,7 +18,7 @@ Requirements
 
 Supports
 --
-- Tested on Debian, Ubuntu and MacOS High Sierra.
+- Tested on Debian, Ubuntu, CentOS and MacOS High Sierra.
 
 FYI - *Prototype Warning*
 --
