@@ -37,4 +37,4 @@ Source Code
 
 NetBot CCC Server
 --
-![netbot intro](https://raw.githubusercontent.com/skavngr/netbot/main/netbot.PNG)
+![netbot intro](https://raw.githubusercontent.com/skavngr/netbot/main/netbot_server.PNG)
