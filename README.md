@@ -30,7 +30,7 @@ FYI - *Prototype Warning*
 Source Code
 --
 - _netbot_server.py_ : This is the actual CCC Server. 
-- _netbot_server_instructions.txt_ : CCC loads the information about the targets to attack. 
+- _netbot_conig.py_ : CCC loads the information about the targets to attack. 
 - _netbot_client.py_ : The is the client code (bots).
 
 
