@@ -30,8 +30,13 @@ FYI - *Prototype Warning*
 Source Code
 --
 - _netbot_server.py_ : This is the actual CCC Server. 
-- _netbot_conig.py_ : CCC loads the information about the targets to attack. 
-- _netbot_client.py_ : The is the client code (bots).
+- _netbot_config.py_ : CCC loads the information about the targets to attack. 
+- _netbot_client.py_ : This is the client code (bots).
+
+How do I setup/test _NetBot_?
+--
+- You can test this software in a single machine itself, but the ultimate point of this software to deploy the client (bots) on different machines and the server code (CCC) on your machine.
+- More to be added in Wiki section soon.
 
 
 
