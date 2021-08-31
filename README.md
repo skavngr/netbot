@@ -24,7 +24,7 @@ FYI - *Prototype Warning*
 --
 - This is simply a prototype code and may not fully work up to your expectations. Feel free to fork the project and modify it to meet your needs. 
 - Currently working on making it more robust execution, look and feel features.
-- (_under development_) more attack vectors and variants. as of now supports HTTP Flooding only.
+- (_under development_) more attack vectors and variants. (_as of now supports HTTP Flooding & Ping Flood only._)
 
 
 Source Code
@@ -36,6 +36,7 @@ Source Code
 How do I setup/test _NetBot_?
 --
 - You can test this software in a single machine itself, but the ultimate point of this software to deploy the client (bots) on different machines and the server code (CCC) on your machine.
+  - **very important** Make sure you modify the CCC server address on the _netbot_client.py_ code, else the bots will not connect to your CCC.
 - More to be added in Wiki section soon.
 
 
